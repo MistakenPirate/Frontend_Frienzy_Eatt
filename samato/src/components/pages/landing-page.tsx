@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 interface Restaurant {
   id: number;
@@ -100,22 +101,24 @@ export default function LandingPage() {
                 key={restaurant.id}
                 className="bg-gray-100 rounded-lg overflow-hidden shadow-md dark:bg-gray-700"
               >
-                <Image
-                  src={restaurant.image_url}
-                  alt={`Restaurant ${restaurant.name}`}
-                  width={800}
-                  height={800}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="font-bold text-xl mb-2 dark:text-white">
-                    {restaurant.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {restaurant.cuisine} • ${restaurant.rating} •{" "}
-                    {restaurant.reviews} reviews
-                  </p>
-                </div>
+                <Link href={"/foods"}>
+                  <Image
+                    src={restaurant.image_url}
+                    alt={`Restaurant ${restaurant.name}`}
+                    width={800}
+                    height={800}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-bold text-xl mb-2 dark:text-white">
+                      {restaurant.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {restaurant.cuisine} • ${restaurant.rating} •{" "}
+                      {restaurant.reviews} reviews
+                    </p>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
@@ -130,7 +133,7 @@ export default function LandingPage() {
             </p>
           </div>
           <Button className="mt-4 md:mt-0" size="lg">
-            Order Now
+            <Link href={"/foods"}>Order Now</Link>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -157,13 +160,15 @@ export default function LandingPage() {
                 variant="outline"
                 className="h-24 text-lg font-semibold dark:text-white dark:border-gray-700 relative overflow-hidden"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-40"
-                  style={{
-                    backgroundImage: `url(${categoryImages[category]})`,
-                  }}
-                />
-                {category}
+                <Link href={"/foods"}>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-40"
+                    style={{
+                      backgroundImage: `url(${categoryImages[category]})`,
+                    }}
+                  />
+                  {category}
+                </Link>
               </Button>
             ))}
           </div>
@@ -172,7 +177,7 @@ export default function LandingPage() {
       <section className="bg-slate-200 dark:bg-slate-500 dark:text-white py-8">
         <div className="max-w-6xl mx-auto px-4 flex justify-center">
           <Button size="lg" variant="ghost">
-            Eat Our Food
+            <Link href={"/foods"}>Eat Our Food</Link>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -181,14 +186,15 @@ export default function LandingPage() {
       <section className="bg-gray-100 dark:bg-gray-800 py-12">
         <div className="max-w-6xl mx-auto px-4 flex items-center">
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 dark:text-white">Eat With Us</h2>
+            <h2 className="text-3xl font-bold mb-4 dark:text-white">
+              Eat With Us
+            </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              Join our community to enjoy delicious meals at the click of a button.
+              Join our community to enjoy delicious meals at the click of a
+              button.
             </p>
             <Button size="lg">
-              <Link href={"/foods"}>
-              Join Now
-              </Link>
+              <Link href={"/foods"}>Join Now</Link>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
