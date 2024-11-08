@@ -73,19 +73,8 @@ export default function LandingPage() {
           <p className="text-xl text-white mb-8">
             Order from your favorite restaurants with just a few clicks
           </p>
-          <div className="flex w-full max-w-md">
-            <Input
-              type="text"
-              placeholder="Search for food or restaurants"
-              className="rounded-r-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-            />
-            <Button
-              type="submit"
-              className="rounded-l-none dark:bg-gray-800 dark:text-white"
-            >
-              <Search className="h-4 w-4 mr-2" />
-              Search
-            </Button>
+          <div className="mt-4 p-4 bg-orange-400 rounded-lg">
+            <Link href={"/foods"}>Order Now</Link>
           </div>
         </div>
       </section>
@@ -176,10 +165,12 @@ export default function LandingPage() {
       </section>
       <section className="bg-slate-200 dark:bg-slate-500 dark:text-white py-8">
         <div className="max-w-6xl mx-auto px-4 flex justify-center">
-          <Button size="lg" variant="ghost">
-            <Link href={"/foods"}>Eat Our Food</Link>
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href={"/foods"}>
+            <Button size="lg" variant="ghost">
+              Eat Our Food
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </section>
 
